@@ -67,18 +67,10 @@ MainWindow::~MainWindow()
 }
 void MainWindow::timerEvent(QTimerEvent *)
 {
-    if(ui->lcdNumbertimer->value() >0 )
-    {
-        ui->lcdNumbertimer->display(ui->lcdNumbertimer->value()-1);
+    ui->lcdNumbertimer->display(ui->lcdNumbertimer->value()-1);
 
-    }
-    else
-    {
-        ui->lcdNumbertimer->display(0);
-    }
-
-    if(ui->lcdNumbertimer->intValue() == 0){       
-
+    if(ui->lcdNumbertimer->intValue() == 0){
+        ui->lcdNumbertimer->hide();
         ui->lcdcorrectrate->show();
         ui->lcdniceplay->show();
         ui->lcdnotbadplay->show();
@@ -100,6 +92,8 @@ void MainWindow::timerEvent(QTimerEvent *)
         switch(QMessageBox::information(this,"Play Again","Again",QMessageBox::Ok|QMessageBox::Cancel,QMessageBox::Ok))
         {
         case QMessageBox::Ok:
+            ui->lcdNumbertimer->show();
+
             ui->lcdcorrectrate->hide();
             ui->lcdniceplay->hide();
             ui->lcdnotbadplay->hide();

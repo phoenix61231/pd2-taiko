@@ -25,8 +25,6 @@ private slots:
 
     void on_GamePbutton_released();
 
-
-
     void on_exit_clicked();
 
 private:
