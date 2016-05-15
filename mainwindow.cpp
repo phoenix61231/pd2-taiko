@@ -28,15 +28,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->score->hide();
     ui->lcdNumbertimer->hide();
     ui->lcdNumberscore->hide();
+    ui->lcdNumbertimer->display(30);
+
     ui->goodl->hide();
     ui->goods->hide();
     ui->notbadl->hide();
     ui->notbads->hide();
+
     ui->redtaiko->hide();
     ui->bluetaiko->hide();
     ui->redtaikol->hide();
     ui->bluetaikol->hide();
     ui->blacksoul->hide();
+
     ui->bluesoul->hide();
     ui->greensoul->hide();
     ui->yellowsoul->hide();
@@ -63,13 +67,18 @@ MainWindow::~MainWindow()
 }
 void MainWindow::timerEvent(QTimerEvent *)
 {
-    ui->lcdNumbertimer->display((ui->lcdNumbertimer->intValue()) - 1);
+    if(ui->lcdNumbertimer->value() >0 )
+    {
+        ui->lcdNumbertimer->display(ui->lcdNumbertimer->value()-1);
 
+    }
+    else
+    {
+        ui->lcdNumbertimer->display(0);
+    }
 
-    if(ui->lcdNumbertimer->intValue() == 0){
-        ui->lcdNumbertimer->hide();
-        QTime t;
-        QObject::startTimer(1000);
+    if(ui->lcdNumbertimer->intValue() == 0){       
+
         ui->lcdcorrectrate->show();
         ui->lcdniceplay->show();
         ui->lcdnotbadplay->show();
@@ -83,7 +92,8 @@ void MainWindow::timerEvent(QTimerEvent *)
         ui->lcdnotbadplay->display(notbadcount);
         ui->lcdnan->display(nancount);
         ui->lcdscore->display(score);
-
+        QTime t;
+        QObject::startTimer(1000);
         t.start();
         while(t.elapsed()<5000)
             QCoreApplication::processEvents();
@@ -108,7 +118,6 @@ void MainWindow::timerEvent(QTimerEvent *)
             ui->bluetaiko->move(QPoint(500,ui->bluetaiko->y()));
             ui->bluetaikol->hide();
             ui->bluetaikol->move(QPoint(500,ui->bluetaikol->y()));
-            ui->lcdNumbertimer->show();
             ui->lcdNumbertimer->display(30);
             score = 0;
             ui->lcdNumberscore->display(score);
@@ -136,7 +145,7 @@ void MainWindow::on_Start_clicked()
     ui->timer->show();
     ui->score->show();
     ui->lcdNumbertimer->show();
-    ui->lcdNumbertimer->display(30);
+
     ui->lcdNumberscore->show();
     ui->blacksoul->show();
     srand(time(NULL));

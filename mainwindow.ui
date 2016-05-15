@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1037</width>
-    <height>710</height>
+    <width>511</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -146,7 +146,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="pics.qrc">:/pics/notes.png</pixmap>
+     <pixmap>:/pics/notes.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="redtaiko">
@@ -513,7 +513,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1037</width>
+     <width>511</width>
      <height>21</height>
     </rect>
    </property>
